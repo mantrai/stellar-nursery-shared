@@ -1,5 +1,5 @@
 import RandomSeedFactory from "./random-seed-factory";
-import seedrandom from "seedrandom";
+import seedrandom = require("seedrandom");
 
 export default class DefaultRandomzer extends RandomSeedFactory {
     seed: string | undefined;
@@ -12,6 +12,10 @@ export default class DefaultRandomzer extends RandomSeedFactory {
 
     rr(min: number, max: number): number {
         return Math.floor(this.randomSource() * (max - min + 1) + min);
+    }
+
+    random(): number {
+        return this.randomSource();
     }
 
     createSeed(): RandomSeedFactory {
