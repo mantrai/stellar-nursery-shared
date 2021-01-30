@@ -1,16 +1,17 @@
-import RandomSeedFactory from "./random-seed-factory";
-import seedrandom = require("seedrandom");
+import RandomSeedFactory from './random-seed-factory';
+import seedrandom = require('seedrandom');
 
-export default class DefaultRandomzer extends RandomSeedFactory {
+export default class DefaultRandomizer extends RandomSeedFactory {
     seed: string | undefined;
     randomSource;
+
     constructor() {
         super();
         this.createSeed();
         this.randomSource = seedrandom(this.seed);
     }
 
-    rr(min: number, max: number): number {
+    between(min: number, max: number): number {
         return Math.floor(this.randomSource() * (max - min + 1) + min);
     }
 
@@ -28,10 +29,9 @@ export default class DefaultRandomzer extends RandomSeedFactory {
         return this.seed;
     }
 
-    setSeed(seed:string): RandomSeedFactory {
+    setSeed(seed: string): RandomSeedFactory {
         this.seed = seed;
         this.randomSource = seedrandom(this.seed);
         return this;
     }
-
 }
