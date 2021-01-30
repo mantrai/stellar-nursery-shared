@@ -11,7 +11,7 @@ export default abstract class RandomSeedFactory {
 
     public abstract random(): number;
 
-    protected getRollResult<T>(arr: RollResults<T>[], rr: number, or: T): T {
+    public getRollResult<T>(arr: RollResults<T>[], rr: number, or: T): T {
         const result: RollResults<T> | undefined = arr.find((value) => {
             return rr <= value.max;
         });
