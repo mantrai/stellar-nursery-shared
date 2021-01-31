@@ -1,28 +1,28 @@
 import RandomSeedFactory from './random-seed-factory';
 
-function getValues<K, O>(source: Map<K, O[]>, key: K, or: O[]): O[] {
+export function getValues<K, O>(source: Map<K, O[]>, key: K, or: O[]): O[] {
     return source.has(key) ? (source.get(key) as O[]) : (or as O[]);
 }
 
-function replaceValues<K, O>(source: Map<K, O[]>, key: K, values: O[]) {
+export function replaceValues<K, O>(source: Map<K, O[]>, key: K, values: O[]) {
     source.set(key, values);
 }
 
-function appendValues<K, O>(source: Map<K, O[]>, key: K, values: O[]) {
+export function appendValues<K, O>(source: Map<K, O[]>, key: K, values: O[]) {
     source.set(key, mergeUniqueArrays<K, O>(source.get(key), values));
 }
 
-function shuffleValues<K, O>(source: Map<K, O[]>, key: K, rand: RandomSeedFactory) {
+export function shuffleValues<K, O>(source: Map<K, O[]>, key: K, rand: RandomSeedFactory) {
     replaceValues<K, O>(source, key, shuffle(source.get(key), rand));
 }
 
-function getRandomValue<K, O>(source: Map<K, O[]>, key: K, rand: RandomSeedFactory): O | boolean {
+export function getRandomValue<K, O>(source: Map<K, O[]>, key: K, rand: RandomSeedFactory): O | boolean {
     const values: O[] = source.has(key) ? (source.get(key) as O[]) : ([] as O[]);
     const len = values.length - 1;
     return values[rand.between(0, len)];
 }
 
-function mergeUniqueArrays<K, O>(arr1: O[] | undefined, arr2: O[]) {
+export function mergeUniqueArrays<K, O>(arr1: O[] | undefined, arr2: O[]) {
     if (arr1 === undefined) {
         return arr2;
     }
@@ -30,7 +30,7 @@ function mergeUniqueArrays<K, O>(arr1: O[] | undefined, arr2: O[]) {
     return Array.from(new Set([...arr1, ...arr2])) as O[];
 }
 
-function shuffle<T>(arr1: T[] | undefined, rand: RandomSeedFactory): T[] {
+export function shuffle<T>(arr1: T[] | undefined, rand: RandomSeedFactory): T[] {
     if (arr1 === undefined) {
         return [];
     }
