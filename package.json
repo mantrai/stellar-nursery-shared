@@ -1,6 +1,6 @@
 {
   "name": "stellar-nursery-shared",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Stellar nursery shared library",
   "repository": "https://github.com/mantrai/stellar-nursery-shared",
   "author": "mantrai <mantra@penitence.eu>",
