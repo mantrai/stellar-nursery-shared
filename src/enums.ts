@@ -1,7 +1,7 @@
 export enum SystemType {
-    Solitary = 'Solitary System',
-    Binary = 'Binary System',
-    Trinary = 'Trinary System',
+    Solitary,
+    Binary,
+    Trinary,
 }
 
 export enum Separation {
