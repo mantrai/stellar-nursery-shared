@@ -1,5 +1,4 @@
-import RollResults from './roll-results';
-
+// noinspection JSUnusedGlobalSymbols,JSUnusedGlobalSymbols,JSUnusedGlobalSymbols
 export default abstract class RandomSeedFactory {
     public abstract createSeed(): RandomSeedFactory;
 
@@ -10,12 +9,4 @@ export default abstract class RandomSeedFactory {
     public abstract between(min: number, max: number): number;
 
     public abstract random(): number;
-
-    public getRollResult<T>(arr: RollResults<T>[], rr: number, or: T): T {
-        const result: RollResults<T> | undefined = arr.find((value) => {
-            return rr <= value.max;
-        });
-
-        return result === undefined ? or : result.data;
-    }
 }
